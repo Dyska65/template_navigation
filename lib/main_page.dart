@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:template_navigation/widget_counter.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key});
+class MainPage extends GetView<MainController> {
+  MainPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    final _mainController = Get.find<MainController>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Welcome to first module'),
@@ -12,19 +16,38 @@ class MainPage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            TextButton(
-              child: const Text('Go to Screens'),
-              onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                context,
-                '/first_page',
-                (Route<dynamic> route) => false,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  child: const Text(
+                    'Check error "Unknown Route"',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  onPressed: () => Get.offAllNamed('____'),
+                ),
+                TextButton(
+                  child: const Text('Go to Screens'),
+                  onPressed: () => Get.offAllNamed('/first_page'),
+                ),
+              ],
             ),
+            WidgetCounter(
+              controllerAdd: _mainController,
+            )
           ],
         ),
       ),
     );
   }
+}
+
+class MainController extends GetxController {
+  RxInt value = 0.obs;
+
+  void add() => value.value++;
+
+  void subtract() => value.value--;
 }

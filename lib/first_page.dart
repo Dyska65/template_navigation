@@ -1,48 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:template_navigation/widget_counter.dart';
 
 class FirstPage extends StatelessWidget {
-  const FirstPage({Key? key}) : super(key: key);
+  FirstPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final _addController = Get.find<FirstAddController>();
+    final _subtractController = Get.find<FirstSubtractController>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        WidgetCounter(
+          controllerAdd: _addController,
+          controllerSubtract: _subtractController,
+        ),
         const Padding(
           padding: EdgeInsets.all(20.0),
-          child: Text('FirstPage'),
+          child: Text('FirstPage Using two controllers'),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  '/',
-                  (Route<dynamic> route) => false,
-                );
+                Get.offAllNamed('/');
               },
               child: const Text('Back to main screen'),
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  '/second_page',
-                  (Route<dynamic> route) => false,
-                );
+                Get.offAllNamed('/second_page');
               },
               child: const Text('Second Page'),
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  '/third_page',
-                  (Route<dynamic> route) => false,
-                );
+                Get.offAllNamed('/third_page');
               },
               child: const Text('Third Page'),
             ),
@@ -50,5 +46,21 @@ class FirstPage extends StatelessWidget {
         )
       ],
     );
+  }
+}
+
+class FirstAddController extends GetxController {
+  RxInt value = 0.obs;
+
+  void add() {
+    value.value++;
+  }
+}
+
+class FirstSubtractController extends GetxController {
+  RxInt value = Get.find<FirstAddController>().value;
+
+  void subtract() {
+    value.value--;
   }
 }

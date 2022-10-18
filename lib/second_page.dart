@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:template_navigation/widget_counter.dart';
 
 class SecondPage extends StatelessWidget {
-  const SecondPage({Key? key}) : super(key: key);
+  SecondPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final _secondController = Get.put<SecondController>(SecondController());
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        WidgetCounter(controllerAdd: _secondController),
         const Padding(
           padding: EdgeInsets.all(20.0),
           child: Text('SecondPage'),
@@ -18,31 +23,19 @@ class SecondPage extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  '/',
-                  (Route<dynamic> route) => false,
-                );
+                Get.offAllNamed('/');
               },
               child: const Text('Back to main screen'),
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  '/first_page',
-                  (Route<dynamic> route) => false,
-                );
+                Get.offAllNamed('/first_page');
               },
               child: const Text('First Page'),
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  '/third_page',
-                  (Route<dynamic> route) => false,
-                );
+                Get.offAllNamed('/third_page');
               },
               child: const Text('Third Page'),
             ),
@@ -51,4 +44,12 @@ class SecondPage extends StatelessWidget {
       ],
     );
   }
+}
+
+class SecondController extends GetxController {
+  RxInt value = 0.obs;
+
+  void add() => value.value++;
+
+  void subtract() => value.value--;
 }
