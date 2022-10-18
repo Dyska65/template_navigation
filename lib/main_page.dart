@@ -4,11 +4,10 @@ import 'package:template_navigation/widget_counter.dart';
 
 class MainPage extends GetView<MainController> {
   MainPage({Key? key});
+  final _mainController = Get.find<MainController>();
 
   @override
   Widget build(BuildContext context) {
-    final _mainController = Get.find<MainController>();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Welcome to first module'),
@@ -34,6 +33,8 @@ class MainPage extends GetView<MainController> {
                 ),
               ],
             ),
+            const Text(
+                'Permanent controller, rebuild only if tapped hot restart'),
             WidgetCounter(
               controllerAdd: _mainController,
             )

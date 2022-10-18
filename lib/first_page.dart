@@ -4,11 +4,10 @@ import 'package:template_navigation/widget_counter.dart';
 
 class FirstPage extends StatelessWidget {
   FirstPage({Key? key}) : super(key: key);
-
+  final _addController = Get.find<FirstAddController>();
+  final _subtractController = Get.find<FirstSubtractController>();
   @override
   Widget build(BuildContext context) {
-    final _addController = Get.find<FirstAddController>();
-    final _subtractController = Get.find<FirstSubtractController>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,

@@ -4,11 +4,10 @@ import 'package:template_navigation/widget_counter.dart';
 
 class ThirdPage extends StatelessWidget {
   ThirdPage({Key? key}) : super(key: key);
+  final _thirdController = Get.put<ThirdController>(ThirdController());
 
   @override
   Widget build(BuildContext context) {
-    final _thirdController = Get.put<ThirdController>(ThirdController());
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -18,6 +17,7 @@ class ThirdPage extends StatelessWidget {
           padding: EdgeInsets.all(20.0),
           child: Text('ThirdPage'),
         ),
+        const Text('Create new controller every time'),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

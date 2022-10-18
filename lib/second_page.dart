@@ -4,20 +4,20 @@ import 'package:template_navigation/widget_counter.dart';
 
 class SecondPage extends StatelessWidget {
   SecondPage({Key? key}) : super(key: key);
+  final _secondController = Get.find<SecondController>();
 
   @override
   Widget build(BuildContext context) {
-    final _secondController = Get.put<SecondController>(SecondController());
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         WidgetCounter(controllerAdd: _secondController),
         const Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(10.0),
           child: Text('SecondPage'),
         ),
+        const Text('Create new controller every time'),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

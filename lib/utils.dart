@@ -5,7 +5,7 @@ import 'package:template_navigation/second_page.dart';
 import 'package:template_navigation/template.dart';
 import 'package:template_navigation/third_page.dart';
 
-// Binding?
+// Binding for better manage controllers
 class Routes {
   static final List<GetPage> listOfRoutes = [
     GetPage(
@@ -25,24 +25,25 @@ class Routes {
       page: () => Template(body: FirstPage()),
       binding: BindingsBuilder(
         () => {
-          Get.put<FirstAddController>(
-            FirstAddController(),
-            permanent: true, // this controller not dispose after hot restart
-          ),
-          Get.put<FirstSubtractController>(
-            FirstSubtractController(),
-            permanent: true, // this controller not dispose after hot restart
-          )
+          // Example of connecting two controllers
+          Get.put<FirstAddController>(FirstAddController()),
+          Get.put<FirstSubtractController>(FirstSubtractController())
         },
       ),
     ),
     GetPage(
       name: '/second_page',
       page: () => Template(body: SecondPage()),
+      binding: BindingsBuilder(
+        () => {Get.put<SecondController>(SecondController())},
+      ),
     ),
     GetPage(
       name: '/third_page',
       page: () => Template(body: ThirdPage()),
+      binding: BindingsBuilder(
+        () => {Get.put<ThirdController>(ThirdController())},
+      ),
     )
   ];
 }
