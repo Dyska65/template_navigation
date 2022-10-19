@@ -12,7 +12,7 @@ class ThirdPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        WidgetCounter(controllerAdd: _thirdController),
+        WidgetCounter(controller: _thirdController),
         const Padding(
           padding: EdgeInsets.all(20.0),
           child: Text('ThirdPage'),
@@ -23,7 +23,7 @@ class ThirdPage extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                Get.offAllNamed('/');
+                Get.offAllNamed('/initial');
               },
               child: const Text('Back to main screen'),
             ),

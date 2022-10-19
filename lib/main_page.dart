@@ -34,9 +34,9 @@ class MainPage extends GetView<MainController> {
               ],
             ),
             const Text(
-                'Permanent controller, rebuild only if tapped hot restart'),
+                'Permanent controller, rebuild only if tapped hot restart/reload'),
             WidgetCounter(
-              controllerAdd: _mainController,
+              controller: _mainController,
             )
           ],
         ),

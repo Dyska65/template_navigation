@@ -9,7 +9,7 @@ import 'package:template_navigation/third_page.dart';
 class Routes {
   static final List<GetPage> listOfRoutes = [
     GetPage(
-      name: '/',
+      name: '/initial',
       page: () => MainPage(),
       binding: BindingsBuilder(
         () => {

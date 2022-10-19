@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class WidgetCounter extends StatelessWidget {
-  WidgetCounter(
-      {Key? key, required this.controllerAdd, this.controllerSubtract})
+  WidgetCounter({Key? key, required this.controller, this.controllerSubtract})
       : super(key: key);
 
-  dynamic controllerAdd;
-  dynamic controllerSubtract;
+  final controller;
+  var controllerSubtract;
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +20,19 @@ class WidgetCounter extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(controllerAdd.value.toString()),
+            Text(controller.value.toString()),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
                   onPressed: () {
-                    controllerAdd.add();
+                    controller.add();
                   },
                   icon: const Icon(Icons.add),
                 ),
                 IconButton(
                   onPressed: () {
-                    controllerSubtract ??= controllerAdd;
+                    controllerSubtract ??= controller;
                     controllerSubtract.subtract();
                   },
                   icon: const Icon(Icons.remove),

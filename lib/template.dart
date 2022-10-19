@@ -16,7 +16,6 @@ class Template extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(appBarText),
-        leading: const SizedBox.shrink(),
       ),
       bottomNavigationBar: Text(
         footerText,

@@ -12,7 +12,7 @@ class SecondPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        WidgetCounter(controllerAdd: _secondController),
+        WidgetCounter(controller: _secondController),
         const Padding(
           padding: EdgeInsets.all(10.0),
           child: Text('SecondPage'),
@@ -23,7 +23,7 @@ class SecondPage extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                Get.offAllNamed('/');
+                Get.offAllNamed('/initial');
               },
               child: const Text('Back to main screen'),
             ),

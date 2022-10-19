@@ -13,7 +13,7 @@ class FirstPage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         WidgetCounter(
-          controllerAdd: _addController,
+          controller: _addController,
           controllerSubtract: _subtractController,
         ),
         const Padding(
@@ -25,7 +25,7 @@ class FirstPage extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                Get.offAllNamed('/');
+                Get.offAllNamed('/initial');
               },
               child: const Text('Back to main screen'),
             ),

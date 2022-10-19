@@ -15,7 +15,7 @@ class ErrorPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(
                     context,
-                    '/',
+                    '/initial',
                     (Route<dynamic> route) => false,
                   );
                 },

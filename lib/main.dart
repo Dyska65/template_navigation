@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:template_navigation/error_page.dart';
-import 'package:template_navigation/first_page.dart';
-import 'package:template_navigation/main_page.dart';
-import 'package:template_navigation/second_page.dart';
-import 'package:template_navigation/template.dart';
-import 'package:template_navigation/third_page.dart';
 import 'package:template_navigation/utils.dart';
 
-// После Hot Restart появляется arrow back решается leading: const SizedBox.shrink(),
+// After Hot Restart/Reload appear arrow back this fix: "leading: const SizedBox.shrink()". This happens only if use Navigater.push....
 // Controller not dispose after close screen if used GetMaterialApp with Navagator or Navigator GetX
+// onUnknownRoute work with MeterialApp(), but with GetMaterialApp(). Fixed if initialRoute != '/'  https://github.com/jonataslaw/getx/issues/2407
+
 void main() {
   runApp(const MyApp());
 }
@@ -24,23 +21,23 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      initialRoute: '/initial',
       getPages: Routes.listOfRoutes,
-      unknownRoute: GetPage(name: '/notfound', page: () => const ErrorPage()),
+      unknownRoute: GetPage(name: '/error', page: () => const ErrorPage()),
     );
   }
 }
 
 
  // routes: {
-      //   '/': (context) => MainPage(),
+      //   '/initial': (context) => MainPage(),
       //   '/first_page': (context) => Template(body: FirstPage()),
       //   '/second_page': (context) => Template(body: SecondPage()),
       //   '/third_page': (context) => Template(body: ThirdPage()),
       // },
      // onGenerateRoute: (settings) {
       //   switch (settings.name) {
-      //     case '/':
+      //     case '/initial':
       //       MaterialPageRoute(builder: (_) => const FirstModulePage());
       //       break;
       //     case '/second_module/secon':
