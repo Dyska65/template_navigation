@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:template_navigation/second_page.dart';
 import 'package:template_navigation/widget_counter.dart';
 
 class ThirdPage extends StatelessWidget {
   ThirdPage({Key? key}) : super(key: key);
-  final _thirdController = Get.put<ThirdController>(ThirdController());
+  final _thirdController = Get.find<SecondController>();
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ThirdPage extends StatelessWidget {
           padding: EdgeInsets.all(20.0),
           child: Text('ThirdPage'),
         ),
-        const Text('Create new controller every time'),
+        const Text('This screen using SecondController'),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -44,12 +45,4 @@ class ThirdPage extends StatelessWidget {
       ],
     );
   }
-}
-
-class ThirdController extends GetxController {
-  RxInt value = 0.obs;
-
-  void add() => value.value++;
-
-  void subtract() => value.value--;
 }

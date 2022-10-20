@@ -18,7 +18,12 @@ class FirstPage extends StatelessWidget {
         ),
         const Padding(
           padding: EdgeInsets.all(20.0),
-          child: Text('FirstPage Using two controllers'),
+          child: Text('FirstPage using two controllers'),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Text(Get.arguments ??
+              ''), // arguments dont work after hot reload/restart
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

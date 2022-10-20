@@ -15,7 +15,7 @@ class Routes {
         () => {
           Get.put<MainController>(
             MainController(),
-            permanent: true, // this controller not dispose after hot restart
+            permanent: true, // this controller not dispose after close screen
           )
         },
       ),
@@ -35,14 +35,20 @@ class Routes {
       name: '/second_page',
       page: () => Template(body: SecondPage()),
       binding: BindingsBuilder(
-        () => {Get.put<SecondController>(SecondController())},
+        // using one controller instance for two screen with help this check (?)
+        () => Get.isRegistered<SecondController>()
+            ? Get.find<SecondController>()
+            : Get.put<SecondController>(SecondController(), permanent: true),
       ),
     ),
     GetPage(
       name: '/third_page',
       page: () => Template(body: ThirdPage()),
       binding: BindingsBuilder(
-        () => {Get.put<ThirdController>(ThirdController())},
+        // using one controller instance for two screen with help this check (?)
+        () => Get.isRegistered<SecondController>()
+            ? Get.find<SecondController>()
+            : Get.put<SecondController>(SecondController(), permanent: true),
       ),
     )
   ];

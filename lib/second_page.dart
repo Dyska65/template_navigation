@@ -17,7 +17,7 @@ class SecondPage extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           child: Text('SecondPage'),
         ),
-        const Text('Create new controller every time'),
+        const Text('Using Permanent Second controller'),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

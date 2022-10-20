@@ -29,7 +29,8 @@ class MainPage extends GetView<MainController> {
                 ),
                 TextButton(
                   child: const Text('Go to Screens'),
-                  onPressed: () => Get.offAllNamed('/first_page'),
+                  onPressed: () => Get.offAllNamed('/first_page',
+                      arguments: 'Argument from MainPage'),
                 ),
               ],
             ),

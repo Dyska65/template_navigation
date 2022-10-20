@@ -28,23 +28,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
- // routes: {
-      //   '/initial': (context) => MainPage(),
-      //   '/first_page': (context) => Template(body: FirstPage()),
-      //   '/second_page': (context) => Template(body: SecondPage()),
-      //   '/third_page': (context) => Template(body: ThirdPage()),
-      // },
-     // onGenerateRoute: (settings) {
-      //   switch (settings.name) {
-      //     case '/initial':
-      //       MaterialPageRoute(builder: (_) => const FirstModulePage());
-      //       break;
-      //     case '/second_module/secon':
-      //       MaterialPageRoute(builder: (_) => const SecondModule());
-      //       break;
-      //     default:
-      //       MaterialPageRoute(builder: (_) => const ErrorPage());
-      //   }
-      //   return MaterialPageRoute(builder: (_) => const ErrorPage());
-      // },
+// routes: {
+//   '/initial': (context) => MainPage(),
+//   '/first_page': (context) => Template(body: FirstPage()),
+//   '/second_page': (context) => Template(body: SecondPage()),
+//   '/third_page': (context) => Template(body: ThirdPage()),
+// },
+// onGenerateRoute: (settings) {
+//   switch (settings.name) {
+//     case '/initial':
+//       MaterialPageRoute(builder: (_) => const FirstModulePage());
+//       break;
+//     case '/second_module/secon':
+//       MaterialPageRoute(builder: (_) => const SecondModule());
+//       break;
+//     default:
+//       MaterialPageRoute(builder: (_) => const ErrorPage());
+//   }
+//   return MaterialPageRoute(builder: (_) => const ErrorPage());
+// },
