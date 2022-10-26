@@ -22,8 +22,8 @@ class FirstPage extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Text(Get.arguments ??
-              ''), // arguments dont work after hot reload/restart
+          child: Text(Get.arguments
+              .toString()), // arguments dont work after hot reload/restart
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
