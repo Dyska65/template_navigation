@@ -24,19 +24,31 @@ class ThirdPage extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                Get.offAllNamed('/initial');
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/initial',
+                  (Route<dynamic> route) => false,
+                );
               },
               child: const Text('Back to main screen'),
             ),
             TextButton(
               onPressed: () {
-                Get.offAllNamed('/first_page');
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/first_page',
+                  (Route<dynamic> route) => false,
+                );
               },
               child: const Text('First Page'),
             ),
             TextButton(
               onPressed: () {
-                Get.offAllNamed('/second_page');
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/second_page',
+                  (Route<dynamic> route) => false,
+                );
               },
               child: const Text('Second Page'),
             ),

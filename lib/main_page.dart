@@ -26,13 +26,25 @@ class MainPage extends GetView<MainController> {
                     'Check error "Unknown Route"',
                     style: TextStyle(color: Colors.red),
                   ),
-                  onPressed: () => Get.offAllNamed('____'),
+                  onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '____',
+                    (Route<dynamic> route) => false,
+                  ),
                 ),
                 TextButton(
                   child: const Text('Go to Screens'),
-                  onPressed: () => Get.offAllNamed('/first_page',
-                      arguments: 'Argument from MainPage'),
+                  onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '/first_page',
+                    arguments: 'Argument from MainPage',
+                    (Route<dynamic> route) => false,
+                  ),
                 ),
+
+                // Get.offAllNamed('/first_page',
+                //     arguments: 'Argument from MainPage'),
+                // ),
               ],
             ),
             const Text(

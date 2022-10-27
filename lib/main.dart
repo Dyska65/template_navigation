@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
         switch (settings.name) {
           case '/initial':
             return GetPageRoute(
+              settings: settings,
               routeName: '/initial',
               page: () => MainPage(),
               binding: BindingsBuilder(
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
             );
           case '/first_page':
             return GetPageRoute(
+              settings: settings,
               routeName: '/first_page',
               page: () => Template(body: FirstPage()),
               binding: BindingsBuilder(
@@ -66,6 +68,7 @@ class MyApp extends StatelessWidget {
             );
           case '/second_page':
             return GetPageRoute(
+              settings: settings,
               routeName: '/second_page',
               page: () => Template(body: SecondPage()),
               binding: BindingsBuilder(
@@ -78,6 +81,7 @@ class MyApp extends StatelessWidget {
             );
           case '/third_page':
             return GetPageRoute(
+              settings: settings,
               routeName: '/third_page',
               page: () => Template(body: ThirdPage()),
               binding: BindingsBuilder(
@@ -93,7 +97,8 @@ class MyApp extends StatelessWidget {
         }
         return MaterialPageRoute(builder: (_) => const ErrorPage());
       },
-      getPages: Routes.listOfRoutes,
+      // routes: Routes.routesList,
+      // getPages: Routes.listOfRoutes,
     );
   }
 }

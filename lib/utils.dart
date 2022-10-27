@@ -67,7 +67,7 @@ class Routes {
     };
   }
 
-  static final List<GetPage> listOfRoutes = [
+  static final List<GetPage> getRoutesList = [
     GetPage(
       name: '/initial',
       page: () => MainPage(),
@@ -112,4 +112,11 @@ class Routes {
       ),
     )
   ];
+
+  static final Map<String, Widget Function(BuildContext)> routesList = {
+    '/initial': (context) => MainPage(),
+    '/first_page': (context) => Template(body: FirstPage()),
+    '/second_page': (context) => Template(body: SecondPage()),
+    '/third_page': (context) => Template(body: ThirdPage()),
+  };
 }

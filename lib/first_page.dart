@@ -22,27 +22,40 @@ class FirstPage extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Text(Get.arguments
-              .toString()), // arguments dont work after hot reload/restart
+          child: Text(
+            ModalRoute.of(context)!.settings.arguments.toString(),
+          ), // arguments dont work after hot restart
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextButton(
               onPressed: () {
-                Get.offAllNamed('/initial');
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/initial',
+                  (Route<dynamic> route) => false,
+                );
               },
               child: const Text('Back to main screen'),
             ),
             TextButton(
               onPressed: () {
-                Get.offAllNamed('/second_page');
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/second_page',
+                  (Route<dynamic> route) => false,
+                );
               },
               child: const Text('Second Page'),
             ),
             TextButton(
               onPressed: () {
-                Get.offAllNamed('/third_page');
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/third_page',
+                  (Route<dynamic> route) => false,
+                );
               },
               child: const Text('Third Page'),
             ),
