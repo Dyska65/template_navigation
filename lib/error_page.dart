@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ErrorPage extends StatelessWidget {
   const ErrorPage({Key? key}) : super(key: key);
@@ -13,10 +14,8 @@ class ErrorPage extends StatelessWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
+                  Get.toNamed(
                     '/initial',
-                    (Route<dynamic> route) => false,
                   );
                 },
                 child: const Text('Go back to main page'),

@@ -16,15 +16,6 @@ class Routes {
           return GetPageRoute(
             routeName: '/initial',
             page: () => MainPage(),
-            binding: BindingsBuilder(
-              () => {
-                Get.put<MainController>(
-                  MainController(),
-                  permanent:
-                      true, // this controller not dispose after close screen
-                )
-              },
-            ),
           );
         case '/first_page':
           return GetPageRoute(
@@ -71,14 +62,6 @@ class Routes {
     GetPage(
       name: '/initial',
       page: () => MainPage(),
-      binding: BindingsBuilder(
-        () => {
-          Get.put<MainController>(
-            MainController(),
-            permanent: true, // this controller not dispose after close screen
-          )
-        },
-      ),
     ),
     GetPage(
       name: '/first_page',
@@ -114,7 +97,7 @@ class Routes {
   ];
 
   static final Map<String, Widget Function(BuildContext)> routesList = {
-    '/initial': (context) => MainPage(),
+    '/initial': (context) => const MainPage(),
     '/first_page': (context) => Template(body: FirstPage()),
     '/second_page': (context) => Template(body: SecondPage()),
     '/third_page': (context) => Template(body: ThirdPage()),
