@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:template_navigation/second_page.dart';
-import 'package:template_navigation/widget_counter.dart';
+import 'package:template_navigation/getX+nav/widget_counter.dart';
 
-class ThirdPage extends StatelessWidget {
-  ThirdPage({Key? key}) : super(key: key);
-  final _thirdController = Get.find<SecondController>();
+class SecondPage extends StatelessWidget {
+  SecondPage({Key? key}) : super(key: key);
+  final _secondController = Get.find<SecondController>();
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +12,12 @@ class ThirdPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        WidgetCounter(controller: _thirdController),
+        WidgetCounter(controller: _secondController),
         const Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Text('ThirdPage'),
+          padding: EdgeInsets.all(10.0),
+          child: Text('SecondPage'),
         ),
-        const Text('This screen using SecondController'),
+        const Text('Using Permanent Second controller'),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -41,14 +40,22 @@ class ThirdPage extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Get.toNamed(
-                  '/second_page',
+                  '/third_page',
                 );
               },
-              child: const Text('Second Page'),
+              child: const Text('Third Page'),
             ),
           ],
         )
       ],
     );
   }
+}
+
+class SecondController extends GetxController {
+  RxInt value = 0.obs;
+
+  void add() => value.value++;
+
+  void subtract() => value.value--;
 }

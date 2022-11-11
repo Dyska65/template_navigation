@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:template_navigation/search.dart';
+import 'package:template_navigation/utils.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -14,15 +15,13 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
     registerForRestoration(_counterRestorable, "_counterRestorable");
   }
 
-  RestorableInt _counterRestorable = RestorableInt(0);
+  final RestorableInt _counterRestorable = RestorableInt(0);
 
   @override
   String? get restorationId => "homepagestate";
 
   @override
   Widget build(BuildContext context) {
-    print('_MainPageState');
-    print(_counterRestorable.value++);
     return Scaffold(
       appBar: AppBar(
         leading: const SizedBox.shrink(),
@@ -31,38 +30,46 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                  child: const Text(
-                    'Check error "Unknown Route"',
-                    style: TextStyle(color: Colors.red),
-                  ),
-                  onPressed: () => Get.toNamed(
-                    '____',
-                  ),
-                ),
-                TextButton(
-                  child: const Text('Go to Screens'),
-                  onPressed: () => Get.toNamed(
-                    '/first_page',
-                    arguments: 'Argument from MainPage',
-                  ),
-                ),
-              ],
+            TextButton(
+              child: const Text(
+                'Go to Example Search',
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                Navigator.restorablePushReplacement(
+                    context, Routes.myRouteBuilderSearchPage);
+              },
             ),
-            const Text(
-                'Permanent controller, rebuild only if tapped hot restart/reload'),
+            TextButton(
+              child: const Text(
+                'Go to Example NavBar',
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                Navigator.restorablePushReplacement(
+                    context, Routes.myRouteBuilderNavBarPage);
+              },
+            ),
+            TextButton(
+              child: const Text(
+                'Go to Example ListView Scroll',
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                Navigator.restorablePushReplacement(
+                    context, Routes.myRouteBuilderListView);
+              },
+            ),
             Container(
               width: 150,
-              height: 100,
+              height: 150,
               decoration: const BoxDecoration(
                 color: Colors.lightBlueAccent,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  const Text('Restorable int'),
                   Text(_counterRestorable.value.toString()),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -70,7 +77,6 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
                       IconButton(
                         onPressed: () {
                           _counterRestorable.value++;
-
                           setState(() {});
                         },
                         icon: const Icon(Icons.add),
@@ -78,7 +84,6 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
                       IconButton(
                         onPressed: () {
                           _counterRestorable.value--;
-
                           setState(() {});
                         },
                         icon: const Icon(Icons.remove),

@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:template_navigation/error_page.dart';
-import 'package:template_navigation/first_page.dart';
-import 'package:template_navigation/main_page.dart';
-import 'package:template_navigation/second_page.dart';
-import 'package:template_navigation/template.dart';
-import 'package:template_navigation/third_page.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:template_navigation/utils.dart';
 
 /* Setup for Restoration and how tested
 iOS:
@@ -39,6 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       navigatorKey: Get.key,
       restorationScopeId: 'app',
       title: 'Flutter Demo',
@@ -46,62 +40,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/initial',
-      onUnknownRoute: ((settings) {
-        return GetPageRoute(
-          routeName: '/erorr',
-          page: () => const ErrorPage(),
-        );
-      }),
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case '/initial':
-            return GetPageRoute(
-              settings: settings,
-              routeName: '/initial',
-              page: () => MainPage(),
-            );
-          case '/first_page':
-            return GetPageRoute(
-              settings: settings,
-              routeName: '/first_page',
-              page: () => Template(body: FirstPage()),
-              binding: BindingsBuilder(
-                () => {
-                  // Example of connecting two controllers
-                  Get.put<FirstAddController>(FirstAddController()),
-                  Get.put<FirstSubtractController>(FirstSubtractController())
-                },
-              ),
-            );
-          case '/second_page':
-            return GetPageRoute(
-              settings: settings,
-              routeName: '/second_page',
-              page: () => Template(body: SecondPage()),
-              binding: BindingsBuilder(
-                // using one controller instance for two screen with help this check (?)
-                () => Get.isRegistered<SecondController>()
-                    ? Get.find<SecondController>()
-                    : Get.put<SecondController>(SecondController(),
-                        permanent: true),
-              ),
-            );
-          case '/third_page':
-            return GetPageRoute(
-              settings: settings,
-              routeName: '/third_page',
-              page: () => Template(body: ThirdPage()),
-              binding: BindingsBuilder(
-                // using one controller instance for two screen with help this check (?)
-                () => Get.isRegistered<SecondController>()
-                    ? Get.find<SecondController>()
-                    : Get.put<SecondController>(SecondController(),
-                        permanent: true),
-              ),
-            );
-          default:
-        }
-      },
+      onUnknownRoute: ((RouteSettings settings) =>
+          Routes.onUnknownRoute(settings)),
+      onGenerateRoute: ((RouteSettings settings) =>
+          Routes.onGenerateRoute(settings)),
     );
   }
 }
